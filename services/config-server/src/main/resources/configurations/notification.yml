@@ -1,0 +1,37 @@
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: localhost:9092
+      group-id: notificationGroup
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring.json.trusted.packages: '*'
+        spring.json.type.mapping: orderConfirmation:com.aaytugozkaya.ecommerce.kafka.order.OrderConfirmation,paymentConfirmation:com.aaytugozkaya.ecommerce.kafka.payment.PaymentConfirmation
+  mail:
+    host: localhost
+    port: 1025
+    username: aaytugozkaya
+    password: aaytugozkaya
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+    data:
+      mongodb:
+        username: root
+        password: root
+        host: localhost
+        port: 27017
+        database: notification
+        authentication-database: admin
+
+  server:
+    port: 8094

@@ -1,0 +1,20 @@
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:8761/eureka/
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+            issuer-uri: http://localhost:9098/realms/micro-services
+  cloud:
+    config:
+     override-system-properties: false
+
+management:
+  tracing:
+    sampling:
+      probability: 1.0
